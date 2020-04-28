@@ -7,9 +7,9 @@ This code is able to replicate the WCalc (Windows VB.NET) and MCalc (C++) versio
 
 The bug fixes are as follows:
 
-Line 128: Forcing curate to quarterly format for unit=Q which stops, means we do not generate fake dates for the quarter placeholders (e.g. 5/29/2010 would not become 2/29/2010 in curdate) and thus collapse the algorithm.
-Line 148, 159 & 173: Making findper search for periods in the original date records when deciding if an entry is in range, not the curdate changed ones, means that we will not miss entries with a date after April (which in curdate terms would be past the end of the period).
-Small as.character fix on line 170 which just stops things falling over based on whether individual systems/users read strings as characters.
-Line 182-186: Adding code to make sure the final record in a series is included (and if necessary  aggregated) in the issue matrix when it is found, instead of R stopping at that line having identified it as the final row (as it currently does in Extract v5).
+- Line 128: Forcing curate to quarterly format for unit=Q which stops, means we do not generate fake dates for the quarter placeholders (e.g. 5/29/2010 would not become 2/29/2010 in curdate) and thus collapse the algorithm.
+- Line 148, 159 & 173: Making findper search for periods in the original date records when deciding if an entry is in range, not the curdate changed ones, means that we will not miss entries with a date after April (which in curdate terms would be past the end of the period).
+- Small as.character fix on line 170 which just stops things falling over based on whether individual systems/users read strings as characters.
+- Line 182-186: Adding code to make sure the final record in a series is included (and if necessary  aggregated) in the issue matrix when it is found, instead of R stopping at that line having identified it as the final row (as it currently does in Extract v5).
 
 With these fixes, the R code replicates with MCalc and WCalc outputs to within 0.0001% on annual and quarterly estimations.
